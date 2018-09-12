@@ -57,7 +57,7 @@ int file_read(struct file* file, unsigned char* data, unsigned int size)
 	oldfs = get_fs();
 	set_fs(get_ds());
 
-	ret = vfs_read(file, data, size, &file->f_pos);
+	ret = kernel_read(file, data, size, &file->f_pos);
 
 	set_fs(oldfs);
 
@@ -72,7 +72,7 @@ int file_write(struct file* file, unsigned char* data, unsigned int size)
 	oldfs = get_fs();
 	set_fs(get_ds());
 
-	ret = vfs_write(file, data, size, &file->f_pos);
+	ret = kernel_write(file, data, size, &file->f_pos);
 
 	set_fs(oldfs);
 
