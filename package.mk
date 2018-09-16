@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="amlogic-e2-procfs"
-PKG_VERSION="3.10.76"
+PKG_VERSION="3.14.29"
 PKG_REV="1"
 PKG_ARCH="arm"
 PKG_LICENSE="nonfree"
