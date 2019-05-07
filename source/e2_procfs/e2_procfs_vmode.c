@@ -58,61 +58,25 @@ int e2procfs_valpha_write(struct ProcWriteInfo *proc_info, char *kbuf)
 
 int e2procfs_vmode_show(struct seq_file *m, void* data)
 {
-	int len;
-	//const vinfo_t *vinfo;
-	struct vinfo_s *vinfo;
+	struct ProcWriteInfo *proc_info = m->private;
 
-	vinfo = get_current_vinfo();
+	if (proc_info->count > 0)
+	{
+		seq_printf(m, "%s", proc_info->bpage);
+	}
+	else
+	{
+		seq_printf(m, "\n");
+	}
 
-	printk("%s(): get current video mode\n", "e2procfs_vmode_show");
-	printk("\tname\t\t\t\t\t:%s\n", vinfo->name);
-	printk("\tmode\t\t\t\t\t:%d\n", vinfo->mode);
-	printk("\twidth\t\t\t\t\t:%d\n", vinfo->width);
-	printk("\theight\t\t\t\t:%d\n", vinfo->height);
-	printk("\tfield_height\t\t\t:%d\n", vinfo->field_height);
-	printk("\taspect_ratio_num\t\t:%d\n", vinfo->aspect_ratio_num);
-	printk("\taspect_ratio_den\t\t:%d\n", vinfo->aspect_ratio_den);
-	printk("\tsync_duration_num\t\t:%d\n", vinfo->sync_duration_num);
-	printk("\tsync_duration_den\t\t:%d\n", vinfo->sync_duration_den);
-	printk("\tscreen_real_width\t\t:%d\n", vinfo->screen_real_width);
-	printk("\tscreen_real_height\t:%d\n", vinfo->screen_real_height);
-	printk("\tvideo_clk\t\t\t\t:%d\n", vinfo->video_clk);
-
-	len = seq_printf(m, "%s\n", vinfo->name);
-
-	return len;
+	return 0;
 }
 
 int e2procfs_vmode_write(struct ProcWriteInfo *proc_info, char *kbuf)
 {
-	int len = 0, ret;
-	//vmode_t mode;
-	enum vmode_e mode;
-
 	proc_info->bpage = kbuf;
 
-	ret = strlen(kbuf);
-    if (ret > 5)
-    {
-	//	*(_WORD *)(&s + v6) = *(_WORD *)"hz";
-	//	*(&s + v6 + 2) = LC0_2[2];
-	}
-
-	mode = validate_vmode(kbuf);
-
-	if (mode == VMODE_MAX)
-	{
-		printk("No valid mode given!\n");
-		len = -EFAULT;
-	}
-	else if (mode != get_current_vmode())
-	{
-		msleep(500);
-		set_current_vmode(mode);
-		printk(kbuf);
-	}
-
-	return len;
+	return 0;
 }
 
 int e2procfs_vchoices50_show(struct seq_file *m, void* data)
@@ -131,16 +95,48 @@ int e2procfs_vchoices60_show(struct seq_file *m, void* data)
 
 int e2procfs_vmode50_show(struct seq_file *m, void* data)
 {
-	int len = seq_printf(m, "1080p50 1080i50 720p50\n");
+	struct ProcWriteInfo *proc_info = m->private;
 
-	return len;
+	if (proc_info->count > 0)
+	{
+		seq_printf(m, "%s", proc_info->bpage);
+	}
+	else
+	{
+		seq_printf(m, "\n");
+	}
+
+	return 0;
+}
+
+int e2procfs_vmode50_write(struct ProcWriteInfo *proc_info, char *kbuf)
+{
+	proc_info->bpage = kbuf;
+
+	return 0;
 }
 
 int e2procfs_vmode60_show(struct seq_file *m, void* data)
 {
-	int len = seq_printf(m, "1080p60 1080i60 720p60\n");
+	struct ProcWriteInfo *proc_info = m->private;
 
-	return len;
+	if (proc_info->count > 0)
+	{
+		seq_printf(m, "%s", proc_info->bpage);
+	}
+	else
+	{
+		seq_printf(m, "\n");
+	}
+
+	return 0;
+}
+
+int e2procfs_vmode60_write(struct ProcWriteInfo *proc_info, char *kbuf)
+{
+	proc_info->bpage = kbuf;
+
+	return 0;
 }
 
 int e2procfs_vpchoices_show(struct seq_file *m, void* data)

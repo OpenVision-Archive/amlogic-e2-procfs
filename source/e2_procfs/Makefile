@@ -25,6 +25,7 @@ ccflags-y += -I$(srctree)/drivers/media/dvb-core -I$(srctree)/drivers/amlogic
 
 e2_procfs-y := \
 	e2_procfs_amlinfo.o \
+	e2_procfs_amode.o \
 	e2_procfs_bus.o \
 	e2_procfs_denc.o \
 	e2_procfs_fileio.o \

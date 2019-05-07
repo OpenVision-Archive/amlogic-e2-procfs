@@ -242,29 +242,37 @@ int save_data_to_file(char *path, int flags, char *data, int size);
 char * dirname(char * name);
 char * basename(char * name);
 
+int e2procfs_ac3_show(struct seq_file *m, void* data);
+int e2procfs_ac3_write(struct ProcWriteInfo *proc_info, char *kbuf);
+int e2procfs_ac3choices_show(struct seq_file *m, void* data);
+int e2procfs_dts_show(struct seq_file *m, void* data);
+int e2procfs_dts_write(struct ProcWriteInfo *proc_info, char *kbuf);
+int e2procfs_dtschoices_show(struct seq_file *m, void* data);
+
 int e2procfs_info_model_show(struct seq_file *m, void* data);
 int e2procfs_info_boxtype_show(struct seq_file *m, void* data);
 int e2procfs_info_chipset_show(struct seq_file *m, void* data);
-
 int e2procfs_nim_sockets_show(struct seq_file *m, void* data);
 
 int e2procfs_progress_show(struct seq_file *m, void* data);
+int e2procfs_progress_write(struct ProcWriteInfo *proc_info, char *kbuf);
 
 int e2procfs_valpha_show(struct seq_file *m, void* data);
-int e2procfs_progress_write(struct ProcWriteInfo *proc_info, char *kbuf);
 int e2procfs_valpha_write(struct ProcWriteInfo *proc_info, char *kbuf);
+int e2procfs_vmode_show(struct seq_file *m, void* data);
 int e2procfs_vmode_write(struct ProcWriteInfo *proc_info, char *kbuf);
 int e2procfs_vchoices50_show(struct seq_file *m, void* data);
 int e2procfs_vchoices60_show(struct seq_file *m, void* data);
 int e2procfs_vmode50_show(struct seq_file *m, void* data);
+int e2procfs_vmode50_write(struct ProcWriteInfo *proc_info, char *kbuf);
 int e2procfs_vmode60_show(struct seq_file *m, void* data);
+int e2procfs_vmode60_write(struct ProcWriteInfo *proc_info, char *kbuf);
 int e2procfs_vpchoices_show(struct seq_file *m, void* data);
 int e2procfs_vpolicy_show(struct seq_file *m, void* data);
 int e2procfs_vachoices_show(struct seq_file *m, void* data);
 int e2procfs_vaspect_show(struct seq_file *m, void* data);
 int e2procfs_vpreferred_show(struct seq_file *m, void* data);
 int e2procfs_vchoices_show(struct seq_file *m, void* data);
-int e2procfs_vmode_show(struct seq_file *m, void* data);
 
 int e2procfs_fpver_show(struct seq_file *m, void* data);
 int e2procfs_fprtc_show(struct seq_file *m, void* data);
