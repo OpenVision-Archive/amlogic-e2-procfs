@@ -401,8 +401,8 @@ static void __exit e2procfs_cleanup_module(void)
 	//	save_data_to_file("/tmp/kernel.txt", O_RDWR | O_CREAT | O_APPEND, buffer, bytes);
 	}
 }
-MODULE_AUTHOR("Open Vision");
-MODULE_DESCRIPTION("procfs for enigma2");
+MODULE_AUTHOR("Open Vision Developers");
+MODULE_DESCRIPTION("Amlogic enigma2 procfs driver");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("1.0.0");
 module_init(e2procfs_init_module);
