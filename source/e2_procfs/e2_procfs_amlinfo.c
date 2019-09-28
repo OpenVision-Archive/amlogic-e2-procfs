@@ -93,13 +93,13 @@ int e2procfs_amlosd_show(struct seq_file *m, void* data)
 
 	osd_get_free_scale_enable_hw(0, &free_scale_enable);
 	osd_get_free_scale_mode_hw(0, &free_scale_mode);
-	len += seq_printf(m, "osddev_get_free_scale_enable:%d\n", free_scale_enable);
-	len += seq_printf(m, "osddev_get_free_scale_mode:%d\n", free_scale_mode);
+	len += seq_printf(m, "osd_get_free_scale_enable:%d\n", free_scale_enable);
+	len += seq_printf(m, "osd_get_free_scale_mode:%d\n", free_scale_mode);
 
 	osd_get_free_scale_width_hw(0, &free_scale_width);
 	osd_get_free_scale_height_hw(0, &free_scale_height);
-	len += seq_printf(m, "osddev_get_free_scale_width:%d\n", free_scale_width);
-	len += seq_printf(m, "osddev_get_free_scale_height:%d\n", free_scale_height);
+	len += seq_printf(m, "osd_get_free_scale_width:%d\n", free_scale_width);
+	len += seq_printf(m, "osd_get_free_scale_height:%d\n", free_scale_height);
 
 	osd_get_free_scale_axis_hw(0, &x, &y, &w, &h);
 	len += seq_printf(m, "free_scale_axis:%d %d %d %d\n", x, y, w, h);

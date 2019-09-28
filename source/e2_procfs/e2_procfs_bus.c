@@ -24,7 +24,7 @@
 #include <linux/dvb/frontend.h>
 #include "dvbdev.h"
 
-#define DVB_MAX_FRONTEND 5
+#define DVB_MAX_FRONTEND 8
 
 
 int e2procfs_nim_sockets_write(struct ProcWriteInfo *proc_info, char *kbuf)

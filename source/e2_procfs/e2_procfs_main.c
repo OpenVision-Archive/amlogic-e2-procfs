@@ -165,7 +165,6 @@ struct ProcStructure_s e2Proc[] =
 	{cProcEntry, "stb/video/plane/psi_tint"                                         , NULL, NULL, NULL, NULL, "psi_tint"},
 	{cProcEntry, "stb/video/plane/psi_apply"                                        , NULL, NULL, NULL, NULL, "psi_apply"},
 /*
-#if defined(UFS912) || defined(UFS913) || defined(ATEVIO7500) || defined(HS7110) || defined(ATEMIO520) || defined(ATEMIO530) || defined(HS7810A) || defined(SPARK) || defined(SPARK7162)
 	{cProcDir  , "stb/cec"                                                          , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/cec/state_activesource"                                       , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/cec/state_standby"                                            , NULL, NULL, NULL, NULL, ""},
@@ -174,23 +173,17 @@ struct ProcStructure_s e2Proc[] =
 	{cProcEntry, "stb/cec/systemstandby"                                            , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/cec/event_poll"                                               , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/cec/send"                                                     , NULL, NULL, NULL, NULL, ""},
-#endif
-#if defined(UFS922) || defined(UFC960)
-// dagobert: the dei settings can be used for all 7109 architectures to affec the de-interlacer
 	{cProcEntry, "stb/video/plane/dei_fmd"                                          , NULL, NULL, NULL, NULL, "dei_fmd"},
 	{cProcEntry, "stb/video/plane/dei_mode"                                         , NULL, NULL, NULL, NULL, "dei_mode"},
 	{cProcEntry, "stb/video/plane/dei_ctrl"                                         , NULL, NULL, NULL, NULL, "dei_ctrl"},
 	{cProcDir  , "stb/fan"                                                          , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/fan/fan_ctrl"                                                 , NULL, NULL, NULL, NULL, ""},
-#endif
-#if defined(ADB_BOX)
 	{cProcDir  , "stb/fan"                                                          , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/hdmi/cec"                                                     , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/fan/fan_ctrl"                                                 , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/video/switch_type"                                            , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/video/switch"                                                 , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/video/switch_choices"                                         , NULL, NULL, NULL, NULL, ""},
-#endif
 */
 	{cProcDir  , "stb/player"                                                       , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/player/version"                                               , NULL, NULL, NULL, NULL, ""},
@@ -221,7 +214,7 @@ static int e2procfs_show(struct seq_file *m, void* data)
 	char bufferfile[MAX_CHAR_LENGTH];
 
 	bytes = sprintf(bufferfile, "e2procfs_show : proc_info->proc_i = %d\n", proc_info->proc_i);
-	save_data_to_file("/storage/e2procfs_show.txt", O_RDWR | O_CREAT | O_APPEND, bufferfile, bytes);
+	save_data_to_file("/tmp/e2procfs_show.txt", O_RDWR | O_CREAT | O_APPEND, bufferfile, bytes);
 
 	return len;
 }
@@ -250,7 +243,7 @@ static int e2procfs_open(struct inode *inode, struct file *file)
 		sprintf(e2Proc_fpath, "/proc/%s", e2Proc[i].name);
 
 		bytes = sprintf(buffer, "e2Proc : file->f_mode = %d / %s / %s == %s\n", file->f_mode, e2Proc[i].name, ptr, e2Proc_fpath);
-//		save_data_to_file("/storage/e2Proc.txt", O_RDWR | O_CREAT | O_APPEND, buffer, bytes);
+//		save_data_to_file("/tmp/e2Proc.txt", O_RDWR | O_CREAT | O_APPEND, buffer, bytes);
 
 //		if (e2Proc[i].type == cProcEntry && strstr(ptr, e2Proc[i].name))
 		if (e2Proc[i].type == cProcEntry && !strcmp(ptr, e2Proc_fpath))
@@ -405,11 +398,11 @@ static void __exit e2procfs_cleanup_module(void)
 		remove_proc_entry(e2Proc[i].name, NULL);
 
 		bytes = sprintf(buffer, "remove_proc_entry : %s\n", e2Proc[i].name);
-	//	save_data_to_file("/storage/kernel.txt", O_RDWR | O_CREAT | O_APPEND, buffer, bytes);
+	//	save_data_to_file("/tmp/kernel.txt", O_RDWR | O_CREAT | O_APPEND, buffer, bytes);
 	}
 }
-MODULE_AUTHOR("SIP-Online");
-MODULE_DESCRIPTION("procfs module with enigma2 support");
+MODULE_AUTHOR("Open Vision");
+MODULE_DESCRIPTION("procfs for enigma2");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("1.0.0");
 module_init(e2procfs_init_module);

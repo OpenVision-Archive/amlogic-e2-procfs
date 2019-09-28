@@ -38,7 +38,7 @@ int e2procfs_vmpeg_dstheight_write(struct ProcWriteInfo *proc_info, char *kbuf)
 	char buffer[MAX_CHAR_LENGTH];
 
 	bytes = sprintf(buffer, "e2procfs_vmpeg_dstheight_write : %s\n", kbuf);
-	save_data_to_file("/storage/e2procfs_vmpeg_dstheight_write.txt", O_RDWR | O_CREAT | O_APPEND, buffer, bytes);
+	save_data_to_file("/tmp/e2procfs_vmpeg_dstheight_write.txt", O_RDWR | O_CREAT | O_APPEND, buffer, bytes);
 
 	proc_info->bpage = kbuf;
 
