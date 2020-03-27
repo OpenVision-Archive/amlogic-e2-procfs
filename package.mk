@@ -55,7 +55,7 @@ make_target() {
 		KSRC=$(kernel_path) \
 		CROSS_COMPILE=$TARGET_PREFIX
 
-	fix_module_depends "e2_procfs.ko" "wetekdvb"
+	fix_module_depends "e2_procfs.ko"
 }
 
 makeinstall_target() {
