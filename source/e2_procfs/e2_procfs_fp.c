@@ -21,6 +21,7 @@
 
 #include "e2_procfs.h"
 #include <linux/platform_device.h>
+/*
 #include <linux/amlogic/aml_rtc.h>
 
 #define RTC_GPO_COUNTER_ADDR		1
@@ -33,14 +34,14 @@
 unsigned int ser_access_read(unsigned long addr);
 int ser_access_write(unsigned long addr, unsigned long data);
 int rtc_set_alarm_aml(struct device *dev, struct alarm_data_s *alarm_data);
-
+*/
 int e2procfs_fpver_show(struct seq_file *m, void* data)
 {
 	int len = seq_printf(m, "1\n");
 
 	return len;
 }
-
+/*
 int e2procfs_fprtc_show(struct seq_file *m, void* data)
 {
 	int len;
@@ -137,3 +138,4 @@ int e2procfs_fpwtw_write(struct ProcWriteInfo *proc_info, char *kbuf)
 
 	return len;
 }
+*/
