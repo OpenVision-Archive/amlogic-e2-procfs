@@ -29,7 +29,7 @@ PKG_PRIORITY="optional"
 PKG_SECTION="driver"
 PKG_SHORTDESC="Amlogic enigma2 procfs driver"
 PKG_LONGDESC="These package contains Amlogic's PROCFS driver"
-PKG_MAINTAINER="Open Vision Developers"
+PKG_MAINTAINER="Open Vision developers"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"

@@ -41,13 +41,14 @@ struct ProcStructure_s e2Proc[] =
 	{cProcEntry, "stb/frontend/0/mode"                                              , NULL, e2procfs_frontend_mode_show, e2procfs_frontend_mode_write, NULL, ""},
 
 	{cProcDir  , "stb/info"                                                         , NULL, NULL, NULL, NULL, ""},
+	{cProcEntry, "stb/info/brand"                                                   , NULL, e2procfs_info_brand_show, NULL, NULL, ""},
 	{cProcEntry, "stb/info/model"                                                   , NULL, e2procfs_info_model_show, NULL, NULL, ""},
-	{cProcEntry, "stb/info/boxtype"                                                 , NULL, e2procfs_info_boxtype_show, NULL, NULL, ""},
+	// {cProcEntry, "stb/info/boxtype"                                                 , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/info/chipset"                                                 , NULL, e2procfs_info_chipset_show, NULL, NULL, ""},
 
 	{cProcDir  , "stb/video"                                                        , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/video/alpha"                                                  , NULL, e2procfs_valpha_show, e2procfs_valpha_write, NULL, ""},
-	{cProcEntry, "stb/video/aspect"                                                 , NULL, e2procfs_vaspect_show, NULL, NULL, ""},
+	{cProcEntry, "stb/video/aspect"                                                 , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/video/aspect_choices"                                         , NULL, e2procfs_vachoices_show, NULL, NULL, ""},
 	{cProcEntry, "stb/video/force_dvi"                                              , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/video/policy"                                                 , NULL, e2procfs_vpolicy_show, NULL, NULL, ""},
@@ -208,15 +209,15 @@ struct proc_dir_entry * find_proc_dir(char * name)
 
 static int e2procfs_show(struct seq_file *m, void* data)
 {
-	struct ProcWriteInfo *proc_info = m->private;
-	int len = seq_printf(m, "\n");
 	int bytes = 0;
 	char bufferfile[MAX_CHAR_LENGTH];
+	struct ProcWriteInfo *proc_info = m->private;
+	seq_printf(m, "\n");
 
 	bytes = sprintf(bufferfile, "e2procfs_show : proc_info->proc_i = %d\n", proc_info->proc_i);
 	save_data_to_file("/tmp/e2procfs_show.txt", O_RDWR | O_CREAT | O_APPEND, bufferfile, bytes);
 
-	return len;
+	return 0;
 }
 
 static int e2procfs_open(struct inode *inode, struct file *file)
@@ -401,7 +402,7 @@ static void __exit e2procfs_cleanup_module(void)
 	//	save_data_to_file("/tmp/kernel.txt", O_RDWR | O_CREAT | O_APPEND, buffer, bytes);
 	}
 }
-MODULE_AUTHOR("Open Vision Developers");
+MODULE_AUTHOR("Open Vision developers");
 MODULE_DESCRIPTION("Amlogic enigma2 procfs driver");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("1.0.0");

@@ -19,7 +19,7 @@ clean: $(clean_more)
 	cd hal ; rm -fr *.mod.c *.mod *.o .*.cmd *.ko
 	cd os_dep ; rm -fr *.mod.c *.mod *.o .*.cmd *.ko
 else
-EXTRA_CFLAGS += -Werror -Wenum-compare
+EXTRA_CFLAGS += -Wenum-compare
 ccflags-y += -D__CHECK_ENDIAN__
 ccflags-y += -I$(srctree)/drivers/media/dvb-core -I$(srctree)/drivers/amlogic
 

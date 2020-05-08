@@ -220,7 +220,7 @@ struct ProcWriteInfo
 };
 
 typedef int (*proc_read_t) (struct seq_file *m, void* data);
-typedef int (*proc_write_t) (struct ProcWriteInfo *proc_info, char *kbuf);
+typedef int (*proc_write_t_e2) (struct ProcWriteInfo *proc_info, char *kbuf);
 
 struct ProcStructure_s
 {
@@ -228,7 +228,7 @@ struct ProcStructure_s
 	char*					name;
 	struct proc_dir_entry*	entry;
 	proc_read_t				read_proc;
-	proc_write_t			write_proc;
+	proc_write_t_e2			write_proc;
 	struct ProcWriteInfo*	proc_info;
 	void*					identifier; /* needed for cpp stuff */
 };
@@ -250,7 +250,7 @@ int e2procfs_dts_write(struct ProcWriteInfo *proc_info, char *kbuf);
 int e2procfs_dtschoices_show(struct seq_file *m, void* data);
 
 int e2procfs_info_model_show(struct seq_file *m, void* data);
-int e2procfs_info_boxtype_show(struct seq_file *m, void* data);
+int e2procfs_info_brand_show(struct seq_file *m, void* data);
 int e2procfs_info_chipset_show(struct seq_file *m, void* data);
 int e2procfs_nim_sockets_show(struct seq_file *m, void* data);
 

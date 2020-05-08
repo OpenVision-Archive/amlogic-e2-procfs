@@ -24,26 +24,23 @@
 int e2procfs_frontend_mode_show(struct seq_file *m, void* data)
 {
 	struct ProcWriteInfo *proc_info = m->private;
-	int len = 0;
 
         if (proc_info->count > 0)
         {
-                len = seq_printf(m, "%s\n", proc_info->bpage);
+                seq_printf(m, "%s\n", proc_info->bpage);
         }
         else
         {
-                len = seq_printf(m, "0\n");
+                seq_printf(m, "0\n");
         }
 
-        return len;
+        return 0;
 
 }
 
 int e2procfs_frontend_mode_write(struct ProcWriteInfo *proc_info, char *kbuf)
 {
-	int len = 0;
-
 	proc_info->bpage = kbuf;
 
-	return len;
+	return 0;
 }

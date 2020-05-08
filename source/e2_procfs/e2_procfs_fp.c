@@ -37,26 +37,24 @@ int rtc_set_alarm_aml(struct device *dev, struct alarm_data_s *alarm_data);
 */
 int e2procfs_fpver_show(struct seq_file *m, void* data)
 {
-	int len = seq_printf(m, "1\n");
+	seq_printf(m, "1\n");
 
-	return len;
+	return 0;
 }
 /*
 int e2procfs_fprtc_show(struct seq_file *m, void* data)
 {
-	int len;
 	unsigned int sa_read;
 
 	sa_read = ser_access_read(0);
-	len = seq_printf(m, "%u", sa_read);
+	seq_printf(m, "%u", sa_read);
 
-	return len;
+	return 0;
 }
 
 int e2procfs_fprtc_write(struct ProcWriteInfo *proc_info, char *kbuf)
 {
 	struct timespec tv;
-	int len = 0;
 	unsigned long  data = 0x500000;
 
 	proc_info->bpage = kbuf;
@@ -67,24 +65,22 @@ int e2procfs_fprtc_write(struct ProcWriteInfo *proc_info, char *kbuf)
 	ser_access_write(RTC_GPO_COUNTER_ADDR, data);
 	do_settimeofday(&tv);
 
-	return len;
+	return 0;
 }
 
 int e2procfs_fpwut_show(struct seq_file *m, void* data)
 {
-	int len;
 	unsigned int armr_read;
 
 	armr_read = aml_read_rtc_mem_reg(0);
-	len = seq_printf(m, "%u", armr_read);
+	seq_printf(m, "%u", armr_read);
 
-	return len;
+	return 0;
 }
 
 int e2procfs_fpwut_write(struct ProcWriteInfo *proc_info, char *kbuf)
 {
 	struct alarm_data_s alarm_data;
-	int len = 0;
 	unsigned long wut, v8;
 	unsigned int sa_read;
 
@@ -110,23 +106,21 @@ int e2procfs_fpwut_write(struct ProcWriteInfo *proc_info, char *kbuf)
 		}
 	}
 
-	return len;
+	return 0;
 }
 
 int e2procfs_fpwtw_show(struct seq_file *m, void* data)
 {
-	int len;
 	unsigned int armr_read;
 
 	armr_read = aml_read_rtc_mem_reg(1);
-	len = seq_printf(m, "%u", armr_read);
+	seq_printf(m, "%u", armr_read);
 
-	return len;
+	return 0;
 }
 
 int e2procfs_fpwtw_write(struct ProcWriteInfo *proc_info, char *kbuf)
 {
-	int len = 0;
 	unsigned long wtw;
 
 	proc_info->bpage = kbuf;
@@ -136,6 +130,6 @@ int e2procfs_fpwtw_write(struct ProcWriteInfo *proc_info, char *kbuf)
 
 	aml_write_rtc_mem_reg(1, wtw);
 
-	return len;
+	return 0;
 }
 */

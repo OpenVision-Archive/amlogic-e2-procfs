@@ -24,25 +24,22 @@
 int e2procfs_progress_show(struct seq_file *m, void* data)
 {
 	struct ProcWriteInfo *proc_info = m->private;
-	int len;
 
 	if (proc_info->count > 0)
 	{
-		len = seq_printf(m, "%s", proc_info->bpage);
+		seq_printf(m, "%s", proc_info->bpage);
 	}
 	else
 	{
-		len = seq_printf(m, "\n");
+		seq_printf(m, "\n");
 	}
 
-	return len;
+	return 0;
 }
 
 int e2procfs_progress_write(struct ProcWriteInfo *proc_info, char *kbuf)
 {
-	int len = 0;
-
 	proc_info->bpage = kbuf;
 
-	return len;
+	return 0;
 }

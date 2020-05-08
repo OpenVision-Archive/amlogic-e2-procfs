@@ -24,14 +24,13 @@
 int e2procfs_vmpeg_dstheight_show(struct seq_file *m, void* data)
 {
 	struct ProcWriteInfo *proc_info = m->private;
-	int len = seq_printf(m, "%08x\n", proc_info->ipage);
+	seq_printf(m, "%08x\n", proc_info->ipage);
 
-	return len;
+	return 0;
 }
 
 int e2procfs_vmpeg_dstheight_write(struct ProcWriteInfo *proc_info, char *kbuf)
 {
-	int len = 0;
 //	int window_height;
 
 	int bytes = 0;
@@ -55,5 +54,5 @@ int e2procfs_vmpeg_dstheight_write(struct ProcWriteInfo *proc_info, char *kbuf)
     printk("%s()dst_height: %d\n", __FUNCTION__, window_height);
 */
 
-	return len;
+	return 0;
 }

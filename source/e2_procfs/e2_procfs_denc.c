@@ -24,32 +24,29 @@
 int e2procfs_wss_denc_show(struct seq_file *m, void* data)
 {
 	struct ProcWriteInfo *proc_info = m->private;
-	int len;
 
 	if (proc_info->count > 0)
 	{
-		len = seq_printf(m, "%s", proc_info->bpage);
+		seq_printf(m, "%s", proc_info->bpage);
 	}
 	else
 	{
-		len = seq_printf(m, "auto\n");
+		seq_printf(m, "auto\n");
 	}
 
-	return len;
+	return 0;
 }
 
 int e2procfs_wss_denc_write(struct ProcWriteInfo *proc_info, char *kbuf)
 {
-	int len = 0;
-
 	proc_info->bpage = kbuf;
 
-	return len;
+	return 0;
 }
 
 int e2procfs_wssc_denc_show(struct seq_file *m, void* data)
 {
-	int len = seq_printf(m, "auto\n");
+	seq_printf(m, "auto\n");
 
-	return len;
+	return 0;
 }
