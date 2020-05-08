@@ -43,7 +43,7 @@ struct ProcStructure_s e2Proc[] =
 	{cProcDir  , "stb/info"                                                         , NULL, NULL, NULL, NULL, ""},
 	{cProcEntry, "stb/info/brand"                                                   , NULL, e2procfs_info_brand_show, NULL, NULL, ""},
 	{cProcEntry, "stb/info/model"                                                   , NULL, e2procfs_info_model_show, NULL, NULL, ""},
-	// {cProcEntry, "stb/info/boxtype"                                                 , NULL, NULL, NULL, NULL, ""},
+	{cProcEntry, "stb/info/boxtype"                                                 , NULL, e2procfs_info_model_show, NULL, NULL, ""},
 	{cProcEntry, "stb/info/chipset"                                                 , NULL, e2procfs_info_chipset_show, NULL, NULL, ""},
 
 	{cProcDir  , "stb/video"                                                        , NULL, NULL, NULL, NULL, ""},

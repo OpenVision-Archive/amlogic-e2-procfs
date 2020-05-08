@@ -27,11 +27,11 @@ int e2procfs_frontend_mode_show(struct seq_file *m, void* data)
 
         if (proc_info->count > 0)
         {
-                seq_printf(m, "%s\n", proc_info->bpage);
+		seq_printf(m, "%s\n", proc_info->bpage);
         }
         else
         {
-                seq_printf(m, "0\n");
+		seq_printf(m, "0\n");
         }
 
         return 0;
